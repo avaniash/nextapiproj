@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose databsed";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
