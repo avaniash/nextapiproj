@@ -20,14 +20,14 @@ export default function page() {
       setError("All fields are required!");
       return;
     }
-    let result = await fetch("http://192.168.1.18:3000/api/test", {
+    let result = await fetch("http://192.168.1.18:3000/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name,   price: Number(price), description, category }),
+      body: JSON.stringify({ name, price, description, category }),
     });
-    
+      
     result = await result.json();
     if(result.success){
       setSuccessMessage("Product added successfully!");
@@ -40,7 +40,7 @@ export default function page() {
  
       <h2 className={styles.textcenter}>Add Products</h2>
       <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Enter Product Name" className={styles.input} />
-      <input type="text" value={price} onChange={(e)=>setPrice(e.target.value)}placeholder="Enter Product Price" className={styles.input} />
+      <input type="number" value={price} onChange={(e)=>setPrice(e.target.value)}placeholder="Enter Product Price" className={styles.input} />
       <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Enter Product Description" className={styles.input} />
       <input type="text" value={category} onChange={(e)=>setCategory(e.target.value)} placeholder="Enter Product Category" className={styles.input} />
       {error && <p className={styles.errormsg}>{error}</p>}
